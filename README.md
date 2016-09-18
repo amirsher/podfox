@@ -121,7 +121,7 @@ ExecStart=/usr/bin/bash -c  '/usr/bin/podfox update > /dev/null 2>&1 && /usr/bin
 [Install]
 WantedBy=timers.target
 ```
-`podfox.service`
+`podfox.timer`
 ```
 [Unit]
 Description=Run podfox
