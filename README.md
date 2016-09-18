@@ -109,6 +109,11 @@ Extortion Startups | TechSNAP 229         |  Not Downloaded
 `podfox download ts --how-many=3` will download the 3 newest techsnap podcasts that have not yet been downloaded. (Skipping newer, but already downloaded ones). If the `--how-many` parameter is omitted, the `maxnum` parameter from the configuration file is used instead.
 
 ### SystemD
+put in /home/amir/.config/systemd/user/ and run:
+
+`$ systemctl --user daemon-reload`
+`$ systemctl --user enable podfox.timer`
+
 `podfox.service`
 ```
 [Unit]
