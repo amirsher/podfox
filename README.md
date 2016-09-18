@@ -15,12 +15,14 @@ podfox main configuration file is called `.podfox.json` and should be located in
 Here is mine: 
 ```
 {
-    "podcast-directory" : "/home/basti/podcasts",
-    "maxnum"            : 5
+    "podcast-directory" : "/home/amir/.podfox",
+    "download-directory" : "/disk/new/podcasts",
+    "maxnum"            : 3
 }
 ```
 `podcast-directory` is your main directory to store podcast data. This directory should be empty before you
 begin adding feeds.
+`download-directory` is where you save the podcats.
 `maxnum` describes the maximum number of episodes you want to download with a single `download`-command.
 
 ## Directory Structure
@@ -33,14 +35,16 @@ In podfox, every podcast is identified with its own `shortname`, which is restri
 +-----------+ python-for-rockstars
 |           |
 |           + feed.json
-|           + episode1.ogg
-|           + episode2.ogg
 |
 +-----------+ cobol-today
             |
             + feed.json
-            + episode289.ogg
-            + episode288.ogg
++ download-directory
+|              
+    + python-for-rockstars_episode1.ogg
+    + python-for-rockstars_episode2.ogg
+    + cobol-today_episode289.ogg
+    + cobol-today_episode288.ogg
 ```
 ## Usage:
 ```
@@ -103,4 +107,32 @@ Extortion Startups | TechSNAP 229         |  Not Downloaded
 `podfox download` will download `maxnum` not yet downloaded episodes for every feed (if possible.)
 
 `podfox download ts --how-many=3` will download the 3 newest techsnap podcasts that have not yet been downloaded. (Skipping newer, but already downloaded ones). If the `--how-many` parameter is omitted, the `maxnum` parameter from the configuration file is used instead.
+
+### SystemD
+`podfox.service`
+```
+[Unit]
+Description=Update Podcast with podfox
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash -c  '/usr/bin/podfox update > /dev/null 2>&1 && /usr/bin/podfox download > /dev/null 2>&1'
+
+[Install]
+WantedBy=timers.target
+```
+`podfox.service`
+```
+[Unit]
+Description=Run podfox
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=1h
+Unit=podfox.service
+
+[Install]
+WantedBy=timers.target
+```
+
 
