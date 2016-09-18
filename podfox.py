@@ -189,11 +189,12 @@ def episodes_from_feed(d):
 
 
 def download_multiple(feed, maxnum):
+    base11 = CONFIGURATION['download-directory']
     for episode in feed['episodes']:
         if maxnum == 0:
             break
         if not episode['downloaded']:
-            download_single(feed['shortname'], episode['url'])
+            download_single(base11, episode['url'])
             episode['downloaded'] = True
             maxnum -= 1
     overwrite_config(feed)
