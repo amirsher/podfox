@@ -1,0 +1,8 @@
+http://feeds.twit.tv/ipad_video_large.xml
+http://feeds.twit.tv/tnt_video_large.xml
+http://feeds.twit.tv/twig_video_large.xml
+http://feeds.twit.tv/twit_video_large.xml
+http://feeds.twit.tv/tri_video_large.xml
+http://feeds.twit.tv/specials_video_large.xml
+http://feeds.twit.tv/aaa_video_large.xml
+http://feeds.twit.tv/tnss_video_large.xml
