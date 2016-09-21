@@ -4,6 +4,7 @@
 
 Usage:
     podfox.py import <feed-url> [<shortname>] [-c=<path>]
+    podfox.py importlist <feed-url> [-c=<path>]
     podfox.py update [<shortname>] [-c=<path>]
     podfox.py feeds [-c=<path>]
     podfox.py episodes <shortname> [-c=<path>]
@@ -299,6 +300,12 @@ if __name__ == '__main__':
         else:
             import_feed(arguments['<feed-url>'],
                         shortname=arguments['<shortname>'])
+        exit(0)
+    if arguments['importlist']:
+        tt = arguments['<feed-url>']
+        with open(tt) as f:
+            for line in f:
+                import_feed(line)
         exit(0)
     if arguments['feeds']:
         pretty_print_feeds(available_feeds())
