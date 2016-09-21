@@ -190,7 +190,14 @@ def episodes_from_feed(d):
 
 
 def download_multiple(feed, maxnum):
-    base11 = CONFIGURATION['download-directory']
+    configfile = expanduser(arguments["--config"])
+    if 'download-directory' in open(configfile).read():
+        base11 = CONFIGURATION['download-directory']
+        folder = get_folder(base11)
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+    else:
+        base11 = feed['shortname']
     for episode in feed['episodes']:
         if maxnum == 0:
             break
@@ -203,7 +210,11 @@ def download_multiple(feed, maxnum):
 
 def download_single(folder, url):
     print(url)
-    base = CONFIGURATION['podcast-directory']
+    configfile = expanduser(arguments["--config"])
+    if 'download-directory' in open(configfile).read():
+        base = CONFIGURATION['download-directory']
+    else:
+        base = CONFIGURATION['podcast-directory']
     filename = url.split('/')[-1]
     filename = filename.split('?')[0]
     print_green("{:s} downloading".format(filename))
