@@ -68,8 +68,11 @@ To import the techsnap podcast, and to store the episodes to a specific folder `
 `podfox import http://feeds.feedburner.com/techsnapmp3 ts`
 
 To import a list from file use:
+
 `podfox.py importlist <feed-url>`
+
 For example
+
 `podfox importlist /home/amir/list.txt`
 
 ### Update
