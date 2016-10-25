@@ -128,7 +128,7 @@ def import_feed(url, shortname=''):
     feed_file = get_feed_file(shortname)
     feed = sort_feed(feed)
     with open(feed_file, 'x') as f:
-        json.dump(feed, f, indent=4)
+        json.dump(feed, f, indent=4, sort_keys=True)
     print('imported ' +
           Fore.GREEN + feed['title'] + Fore.RESET + ' with shortname ' +
           Fore.BLUE + feed['shortname'] + Fore.RESET)
