@@ -69,7 +69,6 @@ def get_feed_file(shortname):
 def sort_feed(feed):
     feed['episodes'] = sorted(feed['episodes'], key=lambda k: k['url'],
                               reverse=True)
-    feed = sorted(feed, key=str.lower)
     return feed
 
 
