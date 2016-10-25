@@ -184,7 +184,7 @@ def episodes_from_feed(d):
                         'url':        link.href,
                         'downloaded': False,
                         'listened':   False,
-                        'published':  date
+                        'published':  entry.published
                         })
     return episodes
 
