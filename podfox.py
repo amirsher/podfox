@@ -67,7 +67,7 @@ def get_feed_file(shortname):
 
 
 def sort_feed(feed):
-    feed['episodes'] = sorted(feed['episodes'], key=lambda k: k['published'],
+    feed['episodes'] = sorted(feed['episodes'], key=lambda k: k['title'],
                               reverse=True)
     return feed
 
@@ -144,8 +144,9 @@ def update_feed(feed):
     for episode in episodes_from_feed(d):
         found = False
         for old_episode in feed['episodes']:
-            if episode['published'] == old_episode['published'] \
-                    and episode['title'] == old_episode['title']:
+#            if episode['published'] == old_episode['published'] \
+#                    and episode['title'] == old_episode['title']:
+            if episode['title'] == old_episode['title']:
                 found = True
         if not found:
             feed['episodes'].append(episode)
