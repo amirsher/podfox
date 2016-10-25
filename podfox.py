@@ -300,7 +300,6 @@ if __name__ == '__main__':
 
     with open(configfile) as conf_file:
         try:
-            global CONFIGURATION
             CONFIGURATION = json.load(conf_file)
         except ValueError:
             print("invalid json in configuration file.")
