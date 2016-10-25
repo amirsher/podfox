@@ -162,7 +162,7 @@ def overwrite_config(feed):
     '''
     filename = get_feed_file(feed['shortname'])
     with open(filename, 'w') as f:
-        json.dump(feed, f, indent=4)
+        json.dump(feed, f, indent=4, sort_keys=True)
 
 
 def episodes_from_feed(d):
