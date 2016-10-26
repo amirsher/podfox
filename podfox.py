@@ -317,6 +317,7 @@ if __name__ == '__main__':
         tt = arguments['<feed-url>']
         with open(tt) as f:
             for line in f:
+                line.rstrip()
                 import_feed(line)
         exit(0)
     if arguments['feeds']:
