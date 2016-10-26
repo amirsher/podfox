@@ -123,6 +123,7 @@ def import_feed(url, shortname=''):
     feed['episodes'] = episodes_from_feed(d)
     feed['shortname'] = shortname
     feed['title'] = d['feed']['title']
+    url.rstrip('\n')
     feed['url'] = url
     # write the configuration to a feed.json within the folder
     feed_file = get_feed_file(shortname)
@@ -317,7 +318,6 @@ if __name__ == '__main__':
         tt = arguments['<feed-url>']
         with open(tt) as f:
             for line in f:
-                line.rstrip('\n')
                 import_feed(line)
         exit(0)
     if arguments['feeds']:
