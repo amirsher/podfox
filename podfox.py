@@ -292,7 +292,6 @@ def pretty_print_episodes(feed):
 
 
 if __name__ == '__main__':
-    global CONFIGURATION
     colorama.init()
     arguments = docopt(__doc__, version='p0d 0.01')
     # before we do anything with the commands,
