@@ -291,7 +291,9 @@ def pretty_print_episodes(feed):
         print(format_str.format(e['title'][:40], status))
 
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
+def main():
+    global CONFIGURATION
     colorama.init()
     arguments = docopt(__doc__, version='p0d 0.01')
     # before we do anything with the commands,
