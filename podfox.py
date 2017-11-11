@@ -210,6 +210,7 @@ def download_multiple(feed, maxnum):
 
 
 def download_single(folder, url):
+    print('\n')
     print(url)
     configfile = expanduser(arguments["--config"])
     if 'download-directory' in open(configfile).read():
@@ -223,6 +224,7 @@ def download_single(folder, url):
     with open(os.path.join(base, folder, filename), 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024**2):
             f.write(chunk)
+    print('\n')
     print("done.")
 
 
