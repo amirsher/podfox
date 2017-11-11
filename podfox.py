@@ -56,6 +56,9 @@ def print_err(err):
 def print_green(s):
     print(Fore.GREEN + s + Fore.RESET)
 
+def print_red(s):
+    print(Fore.RED + s + Fore.RESET)
+
 
 def get_folder(shortname):
     base = CONFIGURATION['podcast-directory']
@@ -210,8 +213,8 @@ def download_multiple(feed, maxnum):
 
 
 def download_single(folder, url):
-    print('\n')
-    print(url)
+    print_red('\n' + "Downloading new episode:")
+    #print(url)
     configfile = expanduser(arguments["--config"])
     if 'download-directory' in open(configfile).read():
         base = CONFIGURATION['download-directory']
@@ -219,13 +222,12 @@ def download_single(folder, url):
         base = CONFIGURATION['podcast-directory']
     filename = url.split('/')[-1]
     filename = filename.split('?')[0]
-    print_green("{:s} downloading".format(filename))
+    print_green("....." + "{:s} .....".format(filename))
     r = requests.get(url.strip(), stream=True)
     with open(os.path.join(base, folder, filename), 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024**2):
             f.write(chunk)
-    print('\n')
-    print("done.")
+    print('\n' + "done.")
 
 
 def available_feeds():
