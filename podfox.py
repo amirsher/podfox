@@ -206,14 +206,14 @@ def download_multiple(feed, maxnum):
         if maxnum == 0:
             break
         if not episode['downloaded']:
-            download_single(base11, episode['url'])
+            download_single(base11, episode['url'], episode['title'])
             episode['downloaded'] = True
             maxnum -= 1
     overwrite_config(feed)
 
 
-def download_single(folder, url):
-    print_red('\n' + "Downloading new episode:")
+def download_single(folder, url, title):
+    print('\n' + "Downloading new episode:")
     #print(url)
     configfile = expanduser(arguments["--config"])
     if 'download-directory' in open(configfile).read():
@@ -222,12 +222,13 @@ def download_single(folder, url):
         base = CONFIGURATION['podcast-directory']
     filename = url.split('/')[-1]
     filename = filename.split('?')[0]
-    print_green("....." + "{:s} .....".format(filename))
+    print_red("....." + "{:s} .....".format(filename))
     r = requests.get(url.strip(), stream=True)
     with open(os.path.join(base, folder, filename), 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024**2):
             f.write(chunk)
-    print('\n' + "done.")
+    print(title)
+    print('\n' + "done." + '\n')
 
 
 def available_feeds():
