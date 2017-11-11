@@ -222,13 +222,13 @@ def download_single(folder, url, title):
         base = CONFIGURATION['podcast-directory']
     filename = url.split('/')[-1]
     filename = filename.split('?')[0]
-    print_red("....." + "{:s} .....".format(filename))
+#    print_red("....." + "{:s} .....".format(filename))
+    print_red(title)
     r = requests.get(url.strip(), stream=True)
     with open(os.path.join(base, folder, filename), 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024**2):
             f.write(chunk)
-    print(title)
-    print('\n' + "done." + '\n')
+    print("done." + '\n')
 
 
 def available_feeds():
