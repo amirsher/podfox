@@ -224,8 +224,11 @@ def download_single(folder, url, title):
     filename = filename.split('?')[0]
 #    print_red("....." + "{:s} .....".format(filename))
     print_red(title)
+    filename_new = (title+'.mp4')
+#    filename_new = (title.replace(' ', '_')+('.mp4'))
     r = requests.get(url.strip(), stream=True)
-    with open(os.path.join(base, folder, filename), 'wb') as f:
+#    with open(os.path.join(base, folder, filename), 'wb') as f:
+    with open(os.path.join(base, folder, filename_new), 'wb') as f:
         for chunk in r.iter_content(chunk_size=1024**2):
             f.write(chunk)
     print("done." + '\n')
