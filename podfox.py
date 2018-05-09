@@ -224,6 +224,10 @@ def download_single(folder, url, title):
     filename = filename.split('?')[0]
 #    print_red("....." + "{:s} .....".format(filename))
     print_red(title)
+        # we wanna avoid any filename crazyness,
+        # so file name will be restricted to alphanumeric characters
+    title = ''.join(ch for ch in title
+            if ch.isalnum() or ch == ' ')
     filename_new = (title+'.mp4')
 #    filename_new = (title.replace(' ', '_')+('.mp4'))
     r = requests.get(url.strip(), stream=True)
