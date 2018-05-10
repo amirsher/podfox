@@ -227,7 +227,8 @@ def download_single(folder, url, title):
         # we wanna avoid any filename crazyness,
         # so file name will be restricted to alphanumeric characters
     title = ''.join(ch for ch in title
-            if ch.isalnum() or ch == ' ' or ch == ':' or ch == "'")
+#            if ch.isalnum() or ch == ' ' or ch == ':' or ch == "'")
+            if != "/")
     filename_new = (title+'.mp4')
 #    filename_new = (title.replace(' ', '_')+('.mp4'))
     r = requests.get(url.strip(), stream=True)
