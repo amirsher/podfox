@@ -29,6 +29,7 @@ import os
 import os.path
 import requests
 import sys
+import subprocess
 
 # RSS datetimes follow RFC 2822, same as email headers.
 # this is the chain of stackoverflow posts that led me to believe this is true.
@@ -224,6 +225,8 @@ def download_single(folder, url, title):
     filename = filename.split('?')[0]
 #    print_red("....." + "{:s} .....".format(filename))
     print_red(title)
+    subprocess.run(['notify-send', 'Podfox - start downloading:', title, '--icon=media-optical-video'])# can use Popen instead of run
+
         # we wanna avoid any filename crazyness,
         # so file name will be restricted to alphanumeric characters
     title = ''.join(ch for ch in title
