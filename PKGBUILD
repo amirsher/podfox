@@ -2,7 +2,7 @@
 #github.com/brtmr/podfox.git
 _pkgname=podfox
 pkgname=$_pkgname-git
-pkgver=r94.7e35c8f
+pkgver=r114.bdd1612
 pkgrel=1
 pkgdesc="Catch and manage podcasts from the terminal"
 arch=('any')
@@ -24,3 +24,5 @@ package() {
   cd $pkgname
   install -Dm755 podfox.py "$pkgdir/usr/bin/podfox"
 }
+
+ 
